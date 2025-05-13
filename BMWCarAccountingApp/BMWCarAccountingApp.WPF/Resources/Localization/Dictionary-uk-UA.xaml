@@ -21,7 +21,6 @@
     <system:String x:Key="ColorLabel">Колір:</system:String>
     <system:String x:Key="PriceLabel">Ціна:</system:String>
     <system:String x:Key="SaveButtonText">Зберегти</system:String>
-    <!-- Add message strings -->
     <system:String x:Key="ErrorNoCarSelectedDelete">Будь ласка, виберіть автомобіль для видалення.</system:String>
     <system:String x:Key="ErrorNoCarSelectedDetails">Будь ласка, виберіть автомобіль для перегляду деталей.</system:String>
     <system:String x:Key="ErrorNoDataToExport">Немає даних для експорту.</system:String>
@@ -53,7 +52,6 @@
     <system:String x:Key="SelectCsvFileTitle">Виберіть CSV файл для імпорту</system:String>
     <system:String x:Key="DetailsWindowTitle">Деталі автомобіля: {0}</system:String>
     <system:String x:Key="ErrorsLabel">Помилки</system:String>
-    <!-- Language menu strings -->
     <system:String x:Key="LanguageMenuHeader">_Мова</system:String>
     <system:String x:Key="UkrainianMenuItem">_Українська</system:String>
     <system:String x:Key="EnglishMenuItem">_Англійська</system:String>
