@@ -1,0 +1,64 @@
+<!-- BMWCarAccountingApp.WPF/Views/CarDetailsPage.xaml -->
+<Page x:Class="BMWCarAccountingApp.WPF.Views.CarDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="CarDetailsPage"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch">
+    <Grid Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" 
+                   Text="{StaticResource ModelLabel}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" 
+                   Text="{Binding Car.Model}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" 
+                   Text="{StaticResource YearLabel}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" 
+                   Text="{Binding Car.Year}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" 
+                   Text="{StaticResource VINLabel}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" 
+                   Text="{Binding Car.VIN}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" 
+                   Text="{StaticResource ColorLabel}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" 
+                   Text="{Binding Car.Color}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" 
+                   Text="{StaticResource PriceLabel}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" 
+                   Text="{Binding Car.Price, StringFormat=C}" 
+                   Style="{StaticResource LabelStyle}"/>
+        <Button Grid.Row="5" Grid.ColumnSpan="2"
+                MaxHeight="60"
+                Margin="20,10,20,0"
+                Content="{StaticResource CloseButtonText}" 
+                Command="{Binding CloseCommand}" 
+                Style="{StaticResource ButtonStyle}" 
+                HorizontalAlignment="Stretch"                
+                VerticalAlignment="Bottom"/>
+    </Grid>
+</Page>

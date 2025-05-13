@@ -1,0 +1,108 @@
+<Page x:Class="BMWCarAccountingApp.WPF.Views.CarListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:BMWCarAccountingApp.WPF.Views"
+      mc:Ignorable="d"
+      Title="CarListPage" >
+    <Page.InputBindings>
+        <KeyBinding Key="E" Modifiers="Control" Command="{Binding ExportToExcelCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding ExportToCsvCommand}"/>
+        <KeyBinding Key="I" Modifiers="Control" Command="{Binding ImportFromCsvCommand}"/>
+        <KeyBinding Key="U" Modifiers="Control" Command="{Binding ChangeLanguageCommand}" CommandParameter="uk-UA"/>
+        <KeyBinding Key="N" Modifiers="Control" Command="{Binding ChangeLanguageCommand}" CommandParameter="en-US"/>
+    </Page.InputBindings>
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="{DynamicResource MenuHeaderExport}">
+                <MenuItem Header="{DynamicResource ExportExcelButtonText}" 
+                          InputGestureText="Ctrl+E"
+                          Command="{Binding ExportToExcelCommand}"/>
+                <MenuItem Header="{DynamicResource ExportCsvButtonText}" 
+                          InputGestureText="Ctrl+S"
+                          Command="{Binding ExportToCsvCommand}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource MenuHeaderImport}">
+                <MenuItem Header="{DynamicResource ImportCsvButtonText}" 
+                          InputGestureText="Ctrl+I"
+                          Command="{Binding ImportFromCsvCommand}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource LanguageMenuHeader}">
+                <MenuItem Header="{DynamicResource UkrainianMenuItem}" 
+                          InputGestureText="Ctrl+U"
+                          Tag="uk-UA" 
+                          Command="{Binding ChangeLanguageCommand}" 
+                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"/>
+                <MenuItem Header="{DynamicResource EnglishMenuItem}" 
+                          InputGestureText="Ctrl+N"
+                          Tag="en-US" 
+                          Command="{Binding ChangeLanguageCommand}" 
+                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+                <Button Content="{DynamicResource AddCarButtonText}" 
+                    Background="DarkGreen"
+                    Command="{Binding NavigateToAddCarCommand}" 
+                    Style="{StaticResource ButtonStyle}"
+                    HorizontalAlignment="Left"/>
+                <!--<Button Content="{StatiDynamicResourcecResource ResetChangesButtonText}"
+                    Command="{Binding ResetChangesCommand}" 
+                    Style="{StaticResource ButtonStyle}"
+                    HorizontalAlignment="Left"/>
+                <Button Content="{DynamicResource SaveChangesButtonText}"
+                    Command="{Binding SaveChangesCommand}" 
+                    Style="{StaticResource ButtonStyle}"
+                    HorizontalAlignment="Left"/>-->
+                <Button Content="{DynamicResource DeleteCarButtonText}"
+                        Command="{Binding DeleteCarCommand}" 
+                        Style="{StaticResource ButtonStyle}"
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding IsCarSelected}"
+                        Background="#C21807"
+                        />
+
+                <Button Content="{DynamicResource DetailsCarButtonText}" 
+                        Command="{Binding NavigateToDetailsCommand}" 
+                        Style="{StaticResource ButtonStyle}"
+                        HorizontalAlignment="Left"
+                        IsEnabled="{Binding IsCarSelected}"/>
+            </StackPanel>
+
+
+            <!-- DataGrid із списком автомобілів -->
+            <DataGrid Grid.Row="1" 
+                  ItemsSource="{Binding Cars}" 
+                  Style="{StaticResource DataGridStyle}"
+                  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
+                  CellStyle="{StaticResource DataGridCellStyle}"
+                  SelectedItem="{Binding SelectedCar}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{DynamicResource ModelColumnHeader}"
+                                    Binding="{Binding Model}" 
+                                    Width="2*"/>
+                    <DataGridTextColumn Header="{DynamicResource YearColumnHeader}"
+                                    Binding="{Binding Year}" 
+                                    Width="*"/>
+                    <DataGridTextColumn Header="{DynamicResource ColorColumnHeader}"
+                                    Binding="{Binding Color}" 
+                                    Width="*"/>
+                    <DataGridTextColumn Header="{DynamicResource VINColumnHeader}"
+                                    Binding="{Binding VIN}" 
+                                    Width="2*"/>
+                    <DataGridTextColumn Header="{DynamicResource PriceColumnHeader}"
+                                    Binding="{Binding Price, StringFormat=C}" 
+                                    Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</Page>

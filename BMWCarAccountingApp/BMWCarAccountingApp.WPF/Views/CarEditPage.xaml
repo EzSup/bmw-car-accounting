@@ -1,0 +1,54 @@
+<Page x:Class="BMWCarAccountingApp.WPF.Views.CarEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:BMWCarAccountingApp.WPF.Views"
+      mc:Ignorable="d"
+      Title="CarEditPage" >
+    
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Модель -->
+            <RowDefinition Height="Auto"/> <!-- Рік випуску -->
+            <RowDefinition Height="Auto"/> <!-- VIN-код -->
+            <RowDefinition Height="Auto"/> <!-- Колір -->
+            <RowDefinition Height="Auto"/> <!-- Ціна -->
+            <RowDefinition Height="Auto"/> <!-- Кнопка -->
+            <RowDefinition Height="*"/>   <!-- Простір для вирівнювання -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/> <!-- Етикетки -->
+            <ColumnDefinition Width="*"/>   <!-- Поля введення -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Модель -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Модель" Style="{StaticResource LabelStyle}"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Car.Model, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
+
+        <!-- Рік випуску -->
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Рік випуску" Style="{StaticResource LabelStyle}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Car.Year, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
+
+        <!-- VIN-код -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="VIN-код" Style="{StaticResource LabelStyle}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Car.VIN, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
+
+        <!-- Колір -->
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Колір" Style="{StaticResource LabelStyle}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Car.Color, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
+
+        <!-- Ціна -->
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Ціна" Style="{StaticResource LabelStyle}"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Car.Price, UpdateSourceTrigger=PropertyChanged, StringFormat=C}" Style="{StaticResource TextBoxStyle}"/>
+
+        <!-- Кнопка Зберегти -->
+        <Button Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
+                MaxHeight="60"
+                Content="Зберегти" 
+                Command="{Binding SaveCarCommand}" 
+                Style="{StaticResource ButtonStyle}" 
+                HorizontalAlignment="Stretch"/>
+    </Grid>
+</Page>
